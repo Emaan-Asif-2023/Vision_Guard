@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisionGuard | Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <h2>🛡️ VisionGuard</h2>
+        <div>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('history') }}">Prediction History</a>
+            <a href="{{ url_for('health') }}">Health Check</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="card result-card">
+            <p class="eyebrow">ANALYSIS COMPLETE</p>
+            <h1>Prediction Result</h1>
+
+            <p class="filename">
+                File: <strong>{{ filename }}</strong>
+            </p>
+
+            <div class="prediction">
+                <span class="result-label">{{ prediction.label }}</span>
+                <p class="confidence">
+                    Confidence: {{ "%.2f"|format(prediction.confidence * 100) }}%
+                </p>
+            </div>
+
+            <div class="details">
+                <p>
+                    <strong>AI probability:</strong>
+                    {{ "%.2f"|format(prediction.ai_probability * 100) }}%
+                </p>
+                <p>
+                    <strong>Decision threshold:</strong>
+                    {{ "%.2f"|format(prediction.threshold) }}
+                </p>
+            </div>
+
+            <p class="disclaimer">{{ prediction.caveat }}</p>
+
+            <div class="actions">
+                <a class="button-link" href="{{ url_for('index') }}">
+                    Analyze Another Image
+                </a>
+                <a class="secondary-link" href="{{ url_for('history') }}">
+                    View History
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>VisionGuard - AI vs Real Image Classification</footer>
+</body>
+</html>

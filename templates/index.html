@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisionGuard | Image Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <h2>VisionGuard</h2>
+        <div>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('history') }}">Prediction History</a>
+            <a href="{{ url_for('health') }}">Health Check</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="card">
+            <p class="eyebrow">AI IMAGE DETECTION</p>
+            <h1>Is It AI or Real?</h1>
+            <p class="subtitle">
+                Upload an image and let VisionGuard estimate whether it
+                was AI-generated or captured in the real world.
+            </p>
+
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="alert" role="alert">
+                        {% for message in messages %}
+                            <p>{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            <form action="{{ url_for('result') }}"
+                  method="POST"
+                  enctype="multipart/form-data">
+
+                <label for="image">Choose an image</label>
+                <input
+                    type="file"
+                    id="image"
+                    name="image"
+                    accept=".jpg,.jpeg,.png,.webp"
+                    required
+                >
+
+                <p class="hint">Supported formats: JPG, JPEG, PNG, WEBP. Maximum size: 5 MB.</p>
+
+                <button type="submit">Analyze Image</button>
+            </form>
+
+            <p class="disclaimer">
+                Predictions are estimates and may be incorrect.
+            </p>
+        </section>
+    </main>
+
+    <footer>VisionGuard - AI vs Real Image Classification</footer>
+</body>
+</html>

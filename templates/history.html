@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction History | VisionGuard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>VisionGuard</h1>
+            <p>Prediction History</p>
+        </header>
+
+        <main>
+            <h2>Recent Predictions</h2>
+
+            {% if records %}
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Date & Time</th>
+                            <th>Filename</th>
+                            <th>Prediction</th>
+                            <th>Confidence</th>
+                            <th>AI Probability</th>
+                            <th>Model</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for record in records %}
+                        <tr>
+                            <td>{{ record.id }}</td>
+                            <td>{{ record.timestamp }}</td>
+                            <td>{{ record.filename }}</td>
+                            <td>{{ record.predicted_label }}</td>
+                            <td>{{ "%.2f"|format(record.confidence * 100) }}%</td>
+                            <td>{{ "%.2f"|format(record.ai_probability * 100) }}%</td>
+                            <td>{{ record.model_name }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+                <p>No predictions recorded yet.</p>
+            {% endif %}
+
+            <a href="{{ url_for('index') }}" class="button">
+                Back to Home
+            </a>
+        </main>
+    </div>
+
+</body>
+</html>
