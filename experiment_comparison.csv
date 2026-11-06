@@ -1,0 +1,7 @@
+Experiment,Change,Best Validation Accuracy (%)
+MobileNetV2 Fine-Tuning,Unfroze last 30 backbone layers,78.23129296302795
+MobileNetV2 Transfer Learning,Frozen pretrained backbone,72.10884094238281
+Keras Tuner CNN,Tuned architecture and hyperparameters,69.39
+Baseline CNN,Original CNN,55.10203838348389
+Baseline CNN Dropout 0.2,Dropout reduced from 0.4 to 0.2,55.10203838348389
+Baseline CNN LR 0.0005,Learning rate changed to 0.0005,44.897958636283875

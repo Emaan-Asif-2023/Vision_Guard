@@ -1,0 +1,7 @@
+{
+    "filters_1": 16,
+    "filters_2": 64,
+    "dense_units": 64,
+    "dropout": 0.3,
+    "learning_rate": 0.001
+}

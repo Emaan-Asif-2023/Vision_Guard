@@ -1,5 +1,7 @@
 # VisionGuard: AI vs Real Image Classification
 
+[![VisionGuard CI](https://github.com/Emaan-Asif-2023/Vision_Guard/actions/workflows/visionguardCI.yml/badge.svg)](https://github.com/Emaan-Asif-2023/Vision_Guard/actions/workflows/visionguardCI.yml)
+
 VisionGuard is a deep learning application that classifies images as AI-generated or real using a fine-tuned MobileNetV2 model.
 
 ## Features
