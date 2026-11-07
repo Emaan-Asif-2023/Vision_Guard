@@ -11,14 +11,15 @@ def predict_image(image_file):
         raise RuntimeError("Model API configuration is missing.")
 
     image_file.seek(0)
-
+    file_bytes = image_file.read()
+    
     response = requests.post(
         f"{api_url.rstrip('/')}/predict",
         headers={"X-API-Key": api_key},
         files={
             "file": (
                 image_file.filename or "image.jpg",
-                image_file,
+                file_bytes,
                 image_file.mimetype or "image/jpeg"
             )
         },
